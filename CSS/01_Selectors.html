@@ -1,0 +1,65 @@
+<!--
+  TOPIC: CSS Selectors
+  -----------------------
+  Selectors decide WHICH elements a style rule applies to.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Selectors Example</title>
+<style>
+  /* Element selector: targets ALL <p> tags */
+  p {
+    color: darkslategray;
+  }
+
+  /* Class selector: targets any element with class="highlight" */
+  .highlight {
+    background-color: yellow;
+  }
+
+  /* ID selector: targets the single element with id="main-title" */
+  #main-title {
+    color: crimson;
+    text-decoration: underline;
+  }
+
+  /* Descendant selector: targets <span> only INSIDE .card */
+  .card span {
+    font-weight: bold;
+  }
+
+  /* Group selector: apply same style to multiple selectors */
+  h1, h2, h3 {
+    font-family: Arial, sans-serif;
+  }
+
+  /* Attribute selector: targets inputs with type="text" */
+  input[type="text"] {
+    border: 2px solid steelblue;
+  }
+
+  /* Pseudo-class: styles a link when the mouse hovers over it */
+  a:hover {
+    color: orange;
+  }
+</style>
+</head>
+<body>
+
+  <h1 id="main-title">Main Title (ID selector)</h1>
+
+  <p>This paragraph uses the element selector.</p>
+  <p class="highlight">This paragraph also has the highlight class.</p>
+
+  <div class="card">
+    Inside a card: <span>this text is bold via descendant selector</span>
+  </div>
+
+  <input type="text" placeholder="Styled via attribute selector">
+
+  <p><a href="#">Hover over this link</a></p>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!--
+  TOPIC: Responsive Design & Media Queries
+  -------------------------------------------
+  Media queries apply CSS rules only when certain conditions
+  are met (e.g. screen width), enabling mobile-friendly layouts.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Design Example</title>
+<style>
+  .container {
+    display: flex;
+    gap: 10px;
+    background: #eee;
+    padding: 10px;
+  }
+
+  .box {
+    flex: 1;
+    background: steelblue;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+
+  /* Default (desktop-first) style is above. Below we OVERRIDE for small screens. */
+
+  /* Applies only when the viewport is 768px wide or less (tablets/phones) */
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column; /* stack boxes vertically instead of side-by-side */
+    }
+    .box {
+      background: darkorange;
+    }
+  }
+
+  /* Applies only when the viewport is 480px wide or less (small phones) */
+  @media (max-width: 480px) {
+    body {
+      font-size: 14px;
+    }
+    .box {
+      background: crimson;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <h2>Resize your browser window to see the layout change</h2>
+  <p>
+    Wide screen → boxes side by side (blue).<br>
+    ≤768px → boxes stacked (orange).<br>
+    ≤480px → smaller text, boxes turn red.
+  </p>
+
+  <div class="container">
+    <div class="box">Box 1</div>
+    <div class="box">Box 2</div>
+    <div class="box">Box 3</div>
+  </div>
+
+</body>
+</html>

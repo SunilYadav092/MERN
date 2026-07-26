@@ -1,0 +1,43 @@
+<!--
+  TOPIC: <div> and <span>
+  -------------------------
+  <div>  = block-level, generic container (starts on a new line)
+  <span> = inline, generic container (stays within the text flow)
+  Neither has semantic meaning — they exist purely for
+  grouping content so it can be styled or scripted.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Div and Span Example</title>
+  <style>
+    .card { border: 1px solid #ccc; padding: 12px; margin-bottom: 10px; }
+    .highlight { background-color: yellow; }
+  </style>
+</head>
+<body>
+
+  <h2>Using &lt;div&gt; (block-level container)</h2>
+
+  <!-- Each div takes up the full width and starts on a new line -->
+  <div class="card">
+    <h3>Card 1</h3>
+    <p>Divs are commonly used to group sections like cards, headers, or layout blocks.</p>
+  </div>
+
+  <div class="card">
+    <h3>Card 2</h3>
+    <p>This is a second, separate block.</p>
+  </div>
+
+  <h2>Using &lt;span&gt; (inline container)</h2>
+
+  <!-- Span only wraps the specific words, not the whole line -->
+  <p>
+    The word <span class="highlight">important</span> is highlighted,
+    but the rest of this sentence flows normally around it.
+  </p>
+
+</body>
+</html>

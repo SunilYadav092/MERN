@@ -1,0 +1,57 @@
+<!--
+  TOPIC: Colors and Units
+  --------------------------
+  CSS supports multiple ways to define colors and sizes.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Colors and Units Example</title>
+<style>
+  /* COLOR FORMATS */
+  .named-color   { background-color: tomato; }          /* predefined name */
+  .hex-color     { background-color: #3498db; }         /* hexadecimal */
+  .rgb-color     { background-color: rgb(46, 204, 113); }  /* red, green, blue */
+  .rgba-color    { background-color: rgba(155, 89, 182, 0.5); } /* with transparency */
+  .hsl-color     { background-color: hsl(48, 100%, 50%); } /* hue, saturation, lightness */
+
+  .swatch {
+    color: white;
+    padding: 15px;
+    margin-bottom: 5px;
+    font-family: sans-serif;
+  }
+
+  /* SIZE UNITS */
+  .px-unit  { width: 200px; }             /* fixed pixels */
+  .percent-unit { width: 50%; }           /* relative to parent's width */
+  .em-unit  { font-size: 2em; }           /* relative to PARENT font-size */
+  .rem-unit { font-size: 2rem; }          /* relative to ROOT (html) font-size */
+  .vw-unit  { width: 30vw; }              /* relative to viewport width */
+
+  .unit-box {
+    background: #ddd;
+    padding: 6px;
+    margin-bottom: 4px;
+  }
+</style>
+</head>
+<body>
+
+  <h2>Color Formats</h2>
+  <div class="swatch named-color">Named color: tomato</div>
+  <div class="swatch hex-color">Hex color: #3498db</div>
+  <div class="swatch rgb-color">RGB color: rgb(46, 204, 113)</div>
+  <div class="swatch rgba-color">RGBA color (50% transparent): rgba(155, 89, 182, 0.5)</div>
+  <div class="swatch hsl-color">HSL color: hsl(48, 100%, 50%)</div>
+
+  <h2>Size Units</h2>
+  <div class="unit-box px-unit">Fixed: 200px wide</div>
+  <div class="unit-box percent-unit">Relative: 50% of parent width</div>
+  <p class="em-unit">2em text (relative to parent font-size)</p>
+  <p class="rem-unit">2rem text (relative to root font-size)</p>
+  <div class="unit-box vw-unit">30vw wide (30% of viewport width)</div>
+
+</body>
+</html>

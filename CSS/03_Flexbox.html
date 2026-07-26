@@ -1,0 +1,68 @@
+<!--
+  TOPIC: Flexbox
+  ----------------
+  A one-dimensional layout system for arranging items
+  in a row or column, with easy alignment and spacing control.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Flexbox Example</title>
+<style>
+  .flex-container {
+    display: flex;               /* turns this into a flex container */
+    justify-content: space-between; /* horizontal spacing of items */
+    align-items: center;         /* vertical alignment of items */
+    background-color: #eee;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  .flex-item {
+    background-color: steelblue;
+    color: white;
+    padding: 20px;
+    margin: 5px;
+    text-align: center;
+  }
+
+  /* Flex direction: column stacks items vertically instead of horizontally */
+  .flex-column {
+    display: flex;
+    flex-direction: column;
+    background-color: #eee;
+    padding: 10px;
+  }
+
+  /* flex-grow lets an item expand to fill available space */
+  .grow {
+    flex-grow: 2;
+  }
+</style>
+</head>
+<body>
+
+  <h2>Row layout with space-between</h2>
+  <div class="flex-container">
+    <div class="flex-item">Item 1</div>
+    <div class="flex-item">Item 2</div>
+    <div class="flex-item">Item 3</div>
+  </div>
+
+  <h2>Column layout</h2>
+  <div class="flex-column">
+    <div class="flex-item">Top</div>
+    <div class="flex-item">Middle</div>
+    <div class="flex-item">Bottom</div>
+  </div>
+
+  <h2>flex-grow example</h2>
+  <div class="flex-container">
+    <div class="flex-item grow">I grow to fill extra space</div>
+    <div class="flex-item">Normal</div>
+    <div class="flex-item">Normal</div>
+  </div>
+
+</body>
+</html>

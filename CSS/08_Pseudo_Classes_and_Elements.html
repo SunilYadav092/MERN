@@ -1,0 +1,88 @@
+<!--
+  TOPIC: Pseudo-classes & Pseudo-elements
+  ------------------------------------------
+  Pseudo-classes  (:hover, :nth-child) target elements in a
+  particular STATE or position.
+  Pseudo-elements (::before, ::first-letter) target a
+  specific PART of an element that isn't a real HTML tag.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pseudo-classes and Pseudo-elements Example</title>
+<style>
+  /* PSEUDO-CLASSES */
+
+  /* Styles a link only while the mouse is over it */
+  a:hover {
+    color: red;
+    text-decoration: underline wavy;
+  }
+
+  /* Styles a button while it is being clicked */
+  button:active {
+    transform: scale(0.95);
+  }
+
+  /* Styles an input while it has keyboard focus */
+  input:focus {
+    outline: 3px solid dodgerblue;
+  }
+
+  /* Styles every ODD list item */
+  li:nth-child(odd) {
+    background-color: #f0f0f0;
+  }
+
+  /* Styles the FIRST child of its parent */
+  li:first-child {
+    font-weight: bold;
+  }
+
+  /* PSEUDO-ELEMENTS */
+
+  /* Inserts generated content BEFORE the element's content */
+  .quote::before {
+    content: "“";
+    font-size: 1.5em;
+    color: gray;
+  }
+
+  /* Inserts generated content AFTER the element's content */
+  .quote::after {
+    content: "”";
+    font-size: 1.5em;
+    color: gray;
+  }
+
+  /* Styles just the first letter of a paragraph (drop cap effect) */
+  .drop-cap::first-letter {
+    font-size: 3em;
+    font-weight: bold;
+    color: darkorange;
+  }
+</style>
+</head>
+<body>
+
+  <p><a href="#">Hover over this link</a></p>
+  <button>Click and hold me</button><br><br>
+  <input type="text" placeholder="Click to focus me">
+
+  <ul>
+    <li>First item (bold, first-child)</li>
+    <li>Second item</li>
+    <li>Third item (odd, shaded)</li>
+    <li>Fourth item</li>
+  </ul>
+
+  <p class="quote">This text is wrapped in generated quote marks</p>
+
+  <p class="drop-cap">
+    This paragraph has a large, styled first letter, purely
+    through CSS — no extra HTML tag was needed.
+  </p>
+
+</body>
+</html>

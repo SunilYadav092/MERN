@@ -1,0 +1,49 @@
+<!--
+  TOPIC: Links and Images
+  -------------------------
+  <a> creates hyperlinks. <img> embeds images.
+  Both rely heavily on attributes.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Links and Images Example</title>
+</head>
+<body>
+
+  <h2>Links</h2>
+
+  <!-- Basic external link -->
+  <a href="https://developer.mozilla.org">Visit MDN Web Docs</a><br>
+
+  <!-- Open link in a new tab -->
+  <a href="https://developer.mozilla.org" target="_blank" rel="noopener noreferrer">
+    Open MDN in a new tab
+  </a><br>
+
+  <!-- Link to an email address -->
+  <a href="mailto:someone@example.com">Email us</a><br>
+
+  <!-- Link to a section within the same page (anchor link) -->
+  <a href="#bottom-section">Jump to bottom of this page</a>
+
+  <h2>Images</h2>
+
+  <!--
+    src  = path/URL to the image
+    alt  = text shown if image fails to load, and read by screen readers
+    width / height = control display size
+  -->
+  <img src="https://via.placeholder.com/150" alt="Placeholder image" width="150" height="150">
+
+  <!-- Image that is also a clickable link -->
+  <a href="https://developer.mozilla.org">
+    <img src="https://via.placeholder.com/80" alt="Clickable placeholder image linking to MDN">
+  </a>
+
+  <h2 id="bottom-section">Bottom Section</h2>
+  <p>You landed here by clicking the anchor link above.</p>
+
+</body>
+</html>

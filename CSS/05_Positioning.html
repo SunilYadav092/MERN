@@ -1,0 +1,78 @@
+<!--
+  TOPIC: CSS Positioning
+  -------------------------
+  The `position` property controls how an element is placed
+  relative to its normal flow, its parent, or the viewport.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Positioning Example</title>
+<style>
+  .static-box {
+    position: static; /* default: follows normal document flow */
+    background: lightgray;
+    padding: 10px;
+  }
+
+  .relative-box {
+    position: relative; /* offset relative to its OWN normal position */
+    top: 10px;
+    left: 20px;
+    background: lightblue;
+    padding: 10px;
+  }
+
+  .relative-parent {
+    position: relative; /* creates a positioning context for children */
+    height: 120px;
+    background: #eee;
+    margin-top: 10px;
+  }
+
+  .absolute-box {
+    position: absolute; /* removed from flow, placed relative to nearest positioned ancestor */
+    top: 10px;
+    right: 10px;
+    background: coral;
+    padding: 10px;
+  }
+
+  .fixed-box {
+    position: fixed; /* stays in the same viewport position even when scrolling */
+    bottom: 10px;
+    right: 10px;
+    background: darkslategray;
+    color: white;
+    padding: 8px 12px;
+  }
+
+  .sticky-box {
+    position: sticky; /* acts normal until a scroll threshold, then "sticks" */
+    top: 0;
+    background: gold;
+    padding: 8px;
+  }
+
+  .scroll-spacer {
+    height: 600px;
+  }
+</style>
+</head>
+<body>
+
+  <div class="static-box">Static (default flow)</div>
+  <div class="relative-box">Relative (shifted 10px down, 20px right from normal spot)</div>
+
+  <div class="relative-parent">
+    <div class="absolute-box">Absolute (positioned relative to gray parent)</div>
+  </div>
+
+  <div class="sticky-box">Sticky header — scroll down and watch me stick to the top</div>
+  <div class="scroll-spacer">Scroll down to see the fixed box in the corner...</div>
+
+  <div class="fixed-box">Fixed (always bottom-right of viewport)</div>
+
+</body>
+</html>

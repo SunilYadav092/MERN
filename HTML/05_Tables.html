@@ -1,0 +1,59 @@
+<!--
+  TOPIC: Tables
+  --------------
+  Tables display tabular data using <table>, <tr> (row),
+  <th> (header cell), and <td> (data cell).
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tables Example</title>
+</head>
+<body>
+
+  <h2>Student Grades</h2>
+
+  <table border="1" cellpadding="8" cellspacing="0">
+    <!-- Table head -->
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Subject</th>
+        <th>Grade</th>
+      </tr>
+    </thead>
+
+    <!-- Table body -->
+    <tbody>
+      <tr>
+        <td>Asha</td>
+        <td>Mathematics</td>
+        <td>A</td>
+      </tr>
+      <tr>
+        <td>Ravi</td>
+        <td>Science</td>
+        <td>B+</td>
+      </tr>
+      <tr>
+        <td>Meera</td>
+        <td colspan="2">Absent for exam</td>
+      </tr>
+    </tbody>
+
+    <!-- Table footer -->
+    <tfoot>
+      <tr>
+        <td colspan="3">End of report</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <!--
+    colspan="2" above makes one <td> stretch across 2 columns.
+    There is also rowspan for stretching across multiple rows.
+  -->
+
+</body>
+</html>

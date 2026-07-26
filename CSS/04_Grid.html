@@ -1,0 +1,68 @@
+<!--
+  TOPIC: CSS Grid
+  -----------------
+  A two-dimensional layout system: rows AND columns at once.
+  Ideal for full page layouts and card galleries.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Grid Example</title>
+<style>
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal-width columns */
+    gap: 10px;                             /* space between cells */
+    background-color: #eee;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  .grid-item {
+    background-color: coral;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+
+  /* A more advanced layout: named grid areas */
+  .page-layout {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+      "header header"
+      "sidebar content"
+      "footer footer";
+    gap: 8px;
+    height: 300px;
+  }
+  .page-header  { grid-area: header;  background: steelblue; color: white; }
+  .page-sidebar { grid-area: sidebar; background: lightgray; }
+  .page-content { grid-area: content; background: whitesmoke; }
+  .page-footer  { grid-area: footer;  background: steelblue; color: white; }
+</style>
+</head>
+<body>
+
+  <h2>Basic 3-column grid</h2>
+  <div class="grid-container">
+    <div class="grid-item">1</div>
+    <div class="grid-item">2</div>
+    <div class="grid-item">3</div>
+    <div class="grid-item">4</div>
+    <div class="grid-item">5</div>
+    <div class="grid-item">6</div>
+  </div>
+
+  <h2>Named grid areas (page layout)</h2>
+  <div class="page-layout">
+    <div class="page-header">Header</div>
+    <div class="page-sidebar">Sidebar</div>
+    <div class="page-content">Main Content</div>
+    <div class="page-footer">Footer</div>
+  </div>
+
+</body>
+</html>

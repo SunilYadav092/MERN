@@ -1,0 +1,52 @@
+<!--
+  TOPIC: The Box Model
+  ----------------------
+  Every element is a box made of: content, padding, border, margin.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Box Model Example</title>
+<style>
+  .box {
+    width: 200px;
+    background-color: lightblue;
+
+    padding: 20px;        /* space INSIDE the border, around the content */
+    border: 5px solid navy; /* the edge of the box */
+    margin: 30px;          /* space OUTSIDE the border, pushes other elements away */
+
+    /*
+      box-sizing: border-box means padding and border are INCLUDED
+      in the 200px width, instead of being added on top of it.
+      This makes sizing much more predictable.
+    */
+    box-sizing: border-box;
+  }
+
+  .box-no-border-box {
+    width: 200px;
+    background-color: lightgreen;
+    padding: 20px;
+    border: 5px solid darkgreen;
+    margin: 30px;
+    box-sizing: content-box; /* default behavior: padding/border ADD to width */
+  }
+</style>
+</head>
+<body>
+
+  <h2>box-sizing: border-box (total width stays 200px)</h2>
+  <div class="box">Content area</div>
+
+  <h2>box-sizing: content-box (default — total width becomes wider than 200px)</h2>
+  <div class="box-no-border-box">Content area</div>
+
+  <!--
+    Open browser dev tools and inspect each box to see the
+    computed content / padding / border / margin values.
+  -->
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!--
+  TOPIC: Semantic HTML
+  ----------------------
+  Semantic tags describe the MEANING of content,
+  not just its appearance. This helps accessibility,
+  SEO, and code readability.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Semantic Elements Example</title>
+</head>
+<body>
+
+  <!-- Page header: logo, site title, nav -->
+  <header>
+    <h1>My Blog</h1>
+    <nav>
+      <a href="#">Home</a> |
+      <a href="#">About</a> |
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Main content area of the page -->
+  <main>
+
+    <!-- A self-contained piece of content, e.g. a blog post -->
+    <article>
+      <h2>Understanding Semantic HTML</h2>
+      <p>Published on <time datetime="2026-07-23">July 23, 2026</time></p>
+      <p>Semantic elements make your code easier to read and more accessible...</p>
+    </article>
+
+    <!-- A thematic grouping of content -->
+    <section>
+      <h2>Related Topics</h2>
+      <p>CSS, Accessibility, SEO</p>
+    </section>
+
+    <!-- Content tangentially related to the main content, like a sidebar -->
+    <aside>
+      <h3>About the Author</h3>
+      <p>A full-stack developer learning the MEARN stack.</p>
+    </aside>
+
+  </main>
+
+  <!-- Page footer -->
+  <footer>
+    <p>&copy; 2026 My Blog. All rights reserved.</p>
+  </footer>
+
+  <!--
+    Compare this to using only <div> everywhere — it would work
+    visually the same, but screen readers and search engines
+    would have no idea what each section actually represents.
+  -->
+
+</body>
+</html>
