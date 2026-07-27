@@ -1,0 +1,6 @@
+Subtopic,Title,Description,Explanation,Tags,Answer type,Options,Difficulty,Destination,Correct options,Mark,Negative mark,Category
+Percentages,Simple percentage,What is 25% of 200?,25% of 200 = 0.25 x 200 = 50,"percentage,basics",single,"40,50,60,80",1,practice,1,1,0,Quants
+Algebra,Quadratic roots,Solve $$x^2-5x+6=0$$. What is the larger root?,Factoring gives (x-2)(x-3)=0 so x = 2 or x = 3; the larger root is 3.,"algebra,quadratic",single,"1,2,3,6",2,practice,2,1,-0.25,Quants
+Number System,Pick the even numbers,Which of the following numbers are even?,2 and 8 are even; 3 and 7 are odd. Both correct options must be picked for full marks.,"numbers,even",multi,"2,3,7,8",1,practice,"0,3",2,-0.5,Quants
+Programming Basics,Loop constructs,Which of these are loop constructs in C?,for and while repeat a block; if and switch are branches.,"c,loops",multi,"for,while,if,switch",2,mock,"0,1",2,0,Programming
+Programming Basics,Character type,Which C data type stores a single character?,The char data type stores exactly one character.,"c,types",text,,1,practice,char,1,0,Programming
