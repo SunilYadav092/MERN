@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Responsive Design</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .breakpoint-demo {
+            padding: 20px;
+            text-align: center;
+            background-color: #e9ecef;
+            border: 1px solid #dee2e6;
+            margin-bottom: 10px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Responsive Design Techniques</h1>
+
+        <h2 class="mt-4">Bootstrap Breakpoints</h2>
+        <div class="alert alert-info">
+            <strong>Breakpoints:</strong> 
+            xs (0px), sm (576px), md (768px), lg (992px), xl (1200px), xxl (1400px)
+        </div>
+
+        <h2 class="mt-4">Responsive Grid Demo</h2>
+        <p>Resize your browser to see responsive behavior:</p>
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="breakpoint-demo bg-primary">
+                    Full (xs)<br>Half (sm)<br>Third (md)<br>Quarter (lg)
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="breakpoint-demo bg-success">
+                    Full (xs)<br>Half (sm)<br>Third (md)<br>Quarter (lg)
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="breakpoint-demo bg-warning">
+                    Full (xs)<br>Half (sm)<br>Third (md)<br>Quarter (lg)
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="breakpoint-demo bg-danger">
+                    Full (xs)<br>Half (sm)<br>Third (md)<br>Quarter (lg)
+                </div>
+            </div>
+        </div>
+
+        <h2 class="mt-4">Responsive Images</h2>
+        <img src="https://via.placeholder.com/800x400" class="img-fluid rounded" alt="Responsive image">
+        <p class="mt-2"><small>Uses img-fluid class to scale with container</small></p>
+
+        <h2 class="mt-4">Responsive Tables</h2>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>john@example.com</td>
+                        <td>555-1234</td>
+                        <td>123 Main St, City, State</td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>jane@example.com</td>
+                        <td>555-5678</td>
+                        <td>456 Oak Ave, City, State</td>
+                    </tr>
+                    <tr>
+                        <td>Bob Wilson</td>
+                        <td>bob@example.com</td>
+                        <td>555-9999</td>
+                        <td>789 Pine Rd, City, State</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 class="mt-4">Display Utilities (Responsive)</h2>
+        <div class="d-none d-md-block bg-info p-3 text-white mb-3">
+            This is hidden on mobile (xs-sm) and visible on tablet and above (md+)
+        </div>
+
+        <div class="d-md-none bg-warning p-3 mb-3">
+            This is visible on mobile (xs-sm) and hidden on tablet and above (md+)
+        </div>
+
+        <h2 class="mt-4">Responsive Navbar</h2>
+        <nav class="navbar navbar-expand-md navbar-light bg-light border-bottom mb-4">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Logo</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#">Menu 1</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Menu 2</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <h2 class="mt-4">Responsive Typography</h2>
+        <h1 class="display-1">Display 1 - Scales responsively</h1>
+        <h1>Heading 1 - Responsive</h1>
+        <p class="lead">Lead paragraph - Larger and prominent on all devices</p>
+        <p>Regular paragraph text that adapts to screen size.</p>
+
+        <h2 class="mt-4">Mobile-First Approach Example</h2>
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Card 1</h5>
+                        <p class="card-text">Stacks on mobile, 2 columns on tablet, 3 columns on desktop</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Card 2</h5>
+                        <p class="card-text">Mobile-first design means start mobile, then enhance</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Card 3</h5>
+                        <p class="card-text">Always test on multiple devices and screen sizes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="mt-4">Responsive Padding/Margin</h2>
+        <div class="p-2 p-md-4 p-lg-5 bg-light border">
+            Padding changes: Small on mobile, medium on tablet, large on desktop
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Cards & Components</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Cards & Components</h1>
+
+        <h2 class="mt-4">Alert Messages</h2>
+        <div class="alert alert-primary">Primary Alert - Informational</div>
+        <div class="alert alert-success">Success Alert - Action successful</div>
+        <div class="alert alert-warning">Warning Alert - Warning message</div>
+        <div class="alert alert-danger">Danger Alert - Error occurred</div>
+        <div class="alert alert-info">Info Alert - Additional information</div>
+
+        <h2 class="mt-4">Dismissible Alerts</h2>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Warning!</strong> This alert can be dismissed.
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+
+        <h2 class="mt-4">Badges</h2>
+        <p>
+            <span class="badge bg-primary">Primary</span>
+            <span class="badge bg-success">Success</span>
+            <span class="badge bg-warning">Warning</span>
+            <span class="badge bg-danger">Danger</span>
+            <span class="badge bg-info">Info</span>
+            <span class="badge rounded-pill bg-primary">Pill Badge</span>
+        </p>
+
+        <h2 class="mt-4">Cards</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card Title</h5>
+                        <p class="card-text">Some quick example text for the card.</p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">Featured</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Special Card</h5>
+                        <p class="card-text">This card has a header and footer.</p>
+                    </div>
+                    <div class="card-footer bg-light">Last updated 3 mins ago</div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Centered Card</h5>
+                        <p class="card-text">This content is centered.</p>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-outline-primary btn-sm">Left</button>
+                            <button type="button" class="btn btn-outline-primary btn-sm">Middle</button>
+                            <button type="button" class="btn btn-outline-primary btn-sm">Right</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="mt-4">Modals</h2>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Open Modal
+        </button>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modal Title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>This is the modal body. You can add any content here.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="mt-4">Progress Bars</h2>
+        <div class="progress mb-2">
+            <div class="progress-bar" style="width: 25%">25%</div>
+        </div>
+        <div class="progress mb-2">
+            <div class="progress-bar bg-success" style="width: 50%">50%</div>
+        </div>
+        <div class="progress mb-2">
+            <div class="progress-bar bg-warning" style="width: 75%">75%</div>
+        </div>
+        <div class="progress mb-2">
+            <div class="progress-bar bg-danger" style="width: 100%">100%</div>
+        </div>
+
+        <h2 class="mt-4">Spinners/Loaders</h2>
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-success ms-2" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Advanced Layouts</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid mt-5">
+        <h1 class="mb-4">Advanced Layouts</h1>
+
+        <h2 class="mt-4">Layout 1: Dashboard Layout (Sidebar + Content)</h2>
+        <div class="row g-3 mb-5">
+            <div class="col-md-3">
+                <div class="list-group sticky-top">
+                    <a href="#" class="list-group-item list-group-item-action active">Dashboard</a>
+                    <a href="#" class="list-group-item list-group-item-action">Users</a>
+                    <a href="#" class="list-group-item list-group-item-action">Settings</a>
+                    <a href="#" class="list-group-item list-group-item-action">Reports</a>
+                    <a href="#" class="list-group-item list-group-item-action">Logout</a>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">Dashboard Content</div>
+                    <div class="card-body">
+                        <h5>Welcome to Dashboard</h5>
+                        <p>Main content area with sidebar navigation on the left.</p>
+                        <div class="row mt-3">
+                            <div class="col-md-4 mb-3">
+                                <div class="card text-white bg-success">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Stat 1</h6>
+                                        <p class="card-text" style="font-size: 24px; font-weight: bold;">1,234</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="card text-white bg-info">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Stat 2</h6>
+                                        <p class="card-text" style="font-size: 24px; font-weight: bold;">5,678</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="card text-white bg-warning">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Stat 3</h6>
+                                        <p class="card-text" style="font-size: 24px; font-weight: bold;">900</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="mt-4">Layout 2: Blog Layout (Featured + Recent Posts)</h2>
+        <div class="row g-3 mb-5">
+            <div class="col-md-8">
+                <div class="card mb-4">
+                    <img src="https://via.placeholder.com/750x300" class="card-img-top" alt="Featured">
+                    <div class="card-body">
+                        <h3 class="card-title">Featured Article Title</h3>
+                        <p class="text-muted"><small>Posted by Admin on September 4, 2026</small></p>
+                        <p class="card-text">This is the featured article content. It appears at the top with a large image and prominent placement.</p>
+                        <a href="#" class="btn btn-primary">Read Full Article</a>
+                    </div>
+                </div>
+
+                <h4>Recent Posts</h4>
+                <div class="card mb-3">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="https://via.placeholder.com/200x150" class="img-fluid rounded-start" alt="Post">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Post Title 1</h5>
+                                <p class="card-text"><small class="text-muted">September 3, 2026</small></p>
+                                <p class="card-text">Short excerpt of the post content...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="https://via.placeholder.com/200x150" class="img-fluid rounded-start" alt="Post">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Post Title 2</h5>
+                                <p class="card-text"><small class="text-muted">September 1, 2026</small></p>
+                                <p class="card-text">Short excerpt of the post content...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mb-3">
+                    <div class="card-header bg-light">About</div>
+                    <div class="card-body">
+                        <img src="https://via.placeholder.com/300x200" class="img-fluid mb-3" alt="Author">
+                        <h5>John Doe</h5>
+                        <p>Passionate blogger and web developer sharing insights on technology and design.</p>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-header bg-light">Categories</div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-decoration-none">Technology <span class="badge bg-secondary">12</span></a></li>
+                            <li><a href="#" class="text-decoration-none">Web Design <span class="badge bg-secondary">8</span></a></li>
+                            <li><a href="#" class="text-decoration-none">Tutorial <span class="badge bg-secondary">15</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header bg-light">Archives</div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li><a href="#">September 2026</a></li>
+                            <li><a href="#">August 2026</a></li>
+                            <li><a href="#">July 2026</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="mt-4">Layout 3: Portfolio Grid</h2>
+        <div class="row g-4 mb-5">
+            <div class="col-sm-6 col-lg-3">
+                <div class="card h-100">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Project">
+                    <div class="card-body">
+                        <h5 class="card-title">Project 1</h5>
+                        <p class="card-text">Web Design</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="card h-100">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Project">
+                    <div class="card-body">
+                        <h5 class="card-title">Project 2</h5>
+                        <p class="card-text">Mobile App</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="card h-100">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Project">
+                    <div class="card-body">
+                        <h5 class="card-title">Project 3</h5>
+                        <p class="card-text">Branding</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="card h-100">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Project">
+                    <div class="card-body">
+                        <h5 class="card-title">Project 4</h5>
+                        <p class="card-text">Illustration</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="mt-4">Layout 4: Landing Page with Hero Section</h2>
+        <div class="bg-primary text-white p-5 mb-5 rounded">
+            <h1 class="display-3">Welcome to Our Platform</h1>
+            <p class="lead">Build amazing web experiences with Bootstrap</p>
+            <button class="btn btn-light btn-lg">Get Started</button>
+            <button class="btn btn-outline-light btn-lg ms-2">Learn More</button>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-md-4 mb-3">
+                <div class="text-center">
+                    <h3>✨ Feature 1</h3>
+                    <p>Responsive design that works on all devices</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="text-center">
+                    <h3>⚡ Feature 2</h3>
+                    <p>Fast and optimized for performance</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="text-center">
+                    <h3>🎨 Feature 3</h3>
+                    <p>Beautiful and customizable components</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
