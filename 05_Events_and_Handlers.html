@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Events & Handlers</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .event-box {
+            background-color: #e8f5e9;
+            border: 2px solid #4caf50;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+            min-height: 80px;
+        }
+        .demo-section {
+            background-color: #f1f8e9;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .event-log {
+            background-color: #fff9c4;
+            border-left: 4px solid #fbc02d;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+        }
+        .clickable-box {
+            background-color: #bbdefb;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        .clickable-box:hover {
+            background-color: #90caf9;
+            transform: scale(1.05);
+        }
+        .clickable-box.clicked {
+            background-color: #4caf50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">JavaScript Events & Event Handlers</h1>
+
+        <div class="alert alert-success">
+            <strong>Events</strong> are user interactions (clicks, typing, scrolling, etc.) that you can listen to and respond to.
+        </div>
+
+        <h2 class="mt-4">1. Click Events</h2>
+        <div class="demo-section">
+            <h5>Simple Click Handler</h5>
+            <div class="event-box">
+                <button class="btn btn-primary" onclick="handleClick(event)">Click Me</button>
+                <p id="clickOutput" style="margin-top: 10px;">Click count: 0</p>
+            </div>
+        </div>
+
+        <h2 class="mt-4">2. Different Event Types</h2>
+        <div class="demo-section">
+            <h5>Mouse Events</h5>
+            <div class="clickable-box" id="hoverBox">
+                Hover over me!
+            </div>
+            <div id="mouseEventLog" class="event-log" style="margin-top: 10px;">Mouse events will appear here...</div>
+        </div>
+
+        <h2 class="mt-4">3. Keyboard Events</h2>
+        <div class="demo-section">
+            <h5>Keyboard Input Handler</h5>
+            <input type="text" id="keyInput" class="form-control mb-2" placeholder="Type something...">
+            <div class="event-box">
+                <p>Last key pressed: <strong id="lastKey">-</strong></p>
+                <p>Input value: <strong id="inputValue">-</strong></p>
+                <p>Character count: <strong id="charCount">0</strong></p>
+            </div>
+        </div>
+
+        <h2 class="mt-4">4. Form Events</h2>
+        <div class="demo-section">
+            <h5>Form Submission & Validation</h5>
+            <form id="demoForm" onsubmit="handleFormSubmit(event)">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" class="form-control" placeholder="Enter email">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="password" class="form-control" placeholder="Enter password">
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea id="message" class="form-control" placeholder="Enter your message"></textarea>
+                </div>
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+            <div id="formOutput" class="event-log mt-3">Form output will appear here...</div>
+        </div>
+
+        <h2 class="mt-4">5. Event Bubbling & Delegation</h2>
+        <div class="demo-section">
+            <h5>Event Delegation</h5>
+            <div class="event-box" id="itemContainer">
+                <p style="margin-bottom: 10px;">Click on any item:</p>
+                <button class="btn btn-outline-primary btn-sm item-btn" data-id="1">Item 1</button>
+                <button class="btn btn-outline-primary btn-sm item-btn" data-id="2">Item 2</button>
+                <button class="btn btn-outline-primary btn-sm item-btn" data-id="3">Item 3</button>
+                <button class="btn btn-outline-primary btn-sm item-btn" data-id="4">Item 4</button>
+            </div>
+            <div id="delegationOutput" class="event-log mt-3">Item clicks will appear here...</div>
+        </div>
+
+        <h2 class="mt-4">6. Event Methods & Properties</h2>
+        <div class="demo-section">
+            <h5>Common Event Object Properties</h5>
+            <div class="event-box" id="eventDemo">
+                <p>Move mouse or click to see event details</p>
+            </div>
+            <div id="eventProperties" class="event-log mt-3">Event details will appear here...</div>
+        </div>
+
+        <h2 class="mt-4">7. Adding/Removing Listeners</h2>
+        <div class="demo-section">
+            <h5>addEventListener & removeEventListener</h5>
+            <div class="event-box">
+                <button class="btn btn-success" id="toggleBtn">Enable Counter</button>
+                <p id="counterDisplay" style="margin-top: 10px;">Click counter: 0</p>
+            </div>
+        </div>
+
+        <h2 class="mt-4">8. Common Event Types</h2>
+        <div class="demo-section">
+            <h5>Reference</h5>
+            <pre style="background-color: #f5f5f5; padding: 10px; border-radius: 4px;"><code>
+// Mouse Events
+click, dblclick, mousedown, mouseup
+mouseover, mouseout, mousemove, mouseenter, mouseleave
+
+// Keyboard Events
+keydown, keyup, keypress
+
+// Form Events
+submit, change, input, focus, blur
+
+// Window Events
+load, unload, resize, scroll, beforeunload
+
+// Touch Events (Mobile)
+touchstart, touchend, touchmove
+
+// Event Object Properties
+event.type          // Type of event
+event.target        // Element that triggered event
+event.preventDefault();  // Stop default behavior
+event.stopPropagation(); // Stop event bubbling
+event.key           // Key pressed (keyboard events)
+event.clientX/Y     // Mouse position
+            </code></pre>
+        </div>
+    </div>
+
+    <script>
+        let clickCount = 0;
+
+        function handleClick(event) {
+            clickCount++;
+            document.getElementById('clickOutput').innerText = `Click count: ${clickCount}`;
+        }
+
+        // Mouse Events Demo
+        document.addEventListener('DOMContentLoaded', function() {
+            let hoverBox = document.getElementById('hoverBox');
+            let mouseLog = document.getElementById('mouseEventLog');
+            let logCount = 0;
+
+            hoverBox.addEventListener('mouseover', function(e) {
+                if (logCount > 5) mouseLog.innerHTML = '';
+                logCount++;
+                let log = document.createElement('div');
+                log.className = 'event-log';
+                log.textContent = `mouseover at (${e.clientX}, ${e.clientY})`;
+                mouseLog.insertBefore(log, mouseLog.firstChild);
+            });
+
+            hoverBox.addEventListener('mouseout', function(e) {
+                let log = document.createElement('div');
+                log.className = 'event-log';
+                log.textContent = 'mouseout event';
+                mouseLog.insertBefore(log, mouseLog.firstChild);
+            });
+
+            hoverBox.addEventListener('click', function(e) {
+                this.classList.toggle('clicked');
+                let log = document.createElement('div');
+                log.className = 'event-log';
+                log.textContent = 'click event - box ' + (this.classList.contains('clicked') ? 'highlighted' : 'normal');
+                mouseLog.insertBefore(log, mouseLog.firstChild);
+            });
+
+            // Keyboard Events Demo
+            let keyInput = document.getElementById('keyInput');
+            
+            keyInput.addEventListener('keydown', function(e) {
+                document.getElementById('lastKey').textContent = e.key + ` (Code: ${e.code})`;
+            });
+
+            keyInput.addEventListener('input', function(e) {
+                document.getElementById('inputValue').textContent = e.target.value;
+                document.getElementById('charCount').textContent = e.target.value.length;
+            });
+
+            // Form Submission
+            let form = document.getElementById('demoForm');
+            
+            form.addEventListener('change', function(e) {
+                let formOutput = document.getElementById('formOutput');
+                let log = document.createElement('div');
+                log.className = 'event-log';
+                log.textContent = `Field changed: ${e.target.id} = "${e.target.value}"`;
+                formOutput.insertBefore(log, formOutput.firstChild);
+            });
+
+            // Event Delegation Demo
+            let container = document.getElementById('itemContainer');
+            let delegationOutput = document.getElementById('delegationOutput');
+            
+            container.addEventListener('click', function(e) {
+                if (e.target.classList.contains('item-btn')) {
+                    let itemId = e.target.getAttribute('data-id');
+                    let log = document.createElement('div');
+                    log.className = 'event-log';
+                    log.textContent = `Item ${itemId} clicked at ${new Date().toLocaleTimeString()}`;
+                    delegationOutput.insertBefore(log, delegationOutput.firstChild);
+                }
+            });
+
+            // Event Properties Demo
+            let eventDemo = document.getElementById('eventDemo');
+            let eventProps = document.getElementById('eventProperties');
+            
+            eventDemo.addEventListener('mousemove', function(e) {
+                eventProps.innerHTML = `<div class="event-log">
+                    Type: ${e.type}<br>
+                    Position: X=${e.clientX}, Y=${e.clientY}<br>
+                    Target: ${e.target.tagName}<br>
+                    Timestamp: ${new Date().toLocaleTimeString()}
+                </div>`;
+            });
+
+            // Toggle Event Listener Demo
+            let toggleBtn = document.getElementById('toggleBtn');
+            let counterDisplay = document.getElementById('counterDisplay');
+            let counter = 0;
+            let isEnabled = false;
+
+            function handleCounterClick() {
+                counter++;
+                counterDisplay.innerText = `Click counter: ${counter}`;
+            }
+
+            toggleBtn.addEventListener('click', function() {
+                isEnabled = !isEnabled;
+                
+                if (isEnabled) {
+                    document.addEventListener('click', handleCounterClick);
+                    this.textContent = 'Disable Counter';
+                    this.classList.add('btn-danger');
+                    this.classList.remove('btn-success');
+                    counter = 0;
+                    counterDisplay.innerText = 'Click counter: 0 (enabled)';
+                } else {
+                    document.removeEventListener('click', handleCounterClick);
+                    this.textContent = 'Enable Counter';
+                    this.classList.add('btn-success');
+                    this.classList.remove('btn-danger');
+                    counterDisplay.innerText = 'Click counter: ' + counter + ' (disabled)';
+                }
+            });
+        });
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            let email = document.getElementById('email').value;
+            let password = document.getElementById('password').value;
+            let message = document.getElementById('message').value;
+            
+            let output = `
+                Email: ${email}
+                Password: ${'*'.repeat(password.length)}
+                Message: ${message}
+                Submitted at: ${new Date().toLocaleTimeString()}
+            `;
+            
+            document.getElementById('formOutput').innerHTML = `<div class="event-log">${output}</div>`;
+            
+            // Reset form
+            document.getElementById('demoForm').reset();
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

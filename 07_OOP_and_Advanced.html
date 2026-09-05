@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript OOP & Advanced Concepts</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .oop-output {
+            background-color: #fce4ec;
+            border-left: 4px solid #e91e63;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            min-height: 80px;
+        }
+        .demo-section {
+            background-color: #f3e5f5;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">JavaScript OOP & Advanced Concepts</h1>
+
+        <div class="alert alert-info">
+            <strong>Object-Oriented Programming</strong> organizes code using objects, classes, and inheritance.
+            Advanced concepts include prototypes, this binding, and design patterns.
+        </div>
+
+        <h2 class="mt-4">1. Object Constructor Function</h2>
+        <div class="demo-section">
+            <h5>Creating Objects with Constructor Functions</h5>
+            <pre class="oop-output"><code>
+// Constructor function (old way)
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+    
+    this.greet = function() {
+        return "Hello, I'm " + this.name;
+    };
+}
+
+// Create instances
+const person1 = new Person("John", 30);
+const person2 = new Person("Alice", 25);
+
+console.log(person1.greet());  // Hello, I'm John
+console.log(person2.name);     // Alice
+            </code></pre>
+            <button class="btn btn-primary" onclick="constructorDemo()">Run Example</button>
+            <div class="oop-output mt-3" id="output1">Click button to see output</div>
+        </div>
+
+        <h2 class="mt-4">2. ES6 Classes</h2>
+        <div class="demo-section">
+            <h5>Modern Class Syntax</h5>
+            <pre class="oop-output"><code>
+class Person {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    
+    greet() {
+        return `Hello, I'm ${this.name}`;
+    }
+    
+    getAge() {
+        return `I'm ${this.age} years old`;
+    }
+}
+
+// Create instance
+const person = new Person("John", 30);
+console.log(person.greet());
+            </code></pre>
+            <button class="btn btn-success" onclick="classDemo()">Run Example</button>
+            <div class="oop-output mt-3" id="output2">Click button to see output</div>
+        </div>
+
+        <h2 class="mt-4">3. Inheritance</h2>
+        <div class="demo-section">
+            <h5>Extending Classes</h5>
+            <pre class="oop-output"><code>
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+    
+    speak() {
+        return `${this.name} makes a sound`;
+    }
+}
+
+class Dog extends Animal {
+    speak() {
+        return `${this.name} barks`;
+    }
+    
+    fetch() {
+        return `${this.name} fetches the ball`;
+    }
+}
+
+const dog = new Dog("Rex");
+console.log(dog.speak());   // Rex barks
+console.log(dog.fetch());   // Rex fetches the ball
+            </code></pre>
+            <button class="btn btn-info" onclick="inheritanceDemo()">Run Example</button>
+            <div class="oop-output mt-3" id="output3">Click button to see output</div>
+        </div>
+
+        <h2 class="mt-4">4. Prototypes & Prototype Chain</h2>
+        <div class="demo-section">
+            <h5>Understanding Prototypes</h5>
+            <pre class="oop-output"><code>
+// Adding methods to prototype
+function Animal(name) {
+    this.name = name;
+}
+
+Animal.prototype.speak = function() {
+    return `${this.name} speaks`;
+};
+
+// Prototype inheritance
+function Dog(name, breed) {
+    Animal.call(this, name);
+    this.breed = breed;
+}
+
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.constructor = Dog;
+
+Dog.prototype.bark = function() {
+    return `${this.name} barks`;
+};
+
+const dog = new Dog("Rex", "Labrador");
+console.log(dog.speak());  // Rex speaks (inherited)
+console.log(dog.bark());   // Rex barks
+            </code></pre>
+            <button class="btn btn-warning" onclick="prototypeDemo()">Run Example</button>
+            <div class="oop-output mt-3" id="output4">Click button to see output</div>
+        </div>
+
+        <h2 class="mt-4">5. Static Methods & Properties</h2>
+        <div class="demo-section">
+            <h5>Class-level vs Instance-level</h5>
+            <pre class="oop-output"><code>
+class MathUtils {
+    // Static property (belongs to class, not instances)
+    static PI = 3.14159;
+    
+    // Static method (called on class, not instance)
+    static add(a, b) {
+        return a + b;
+    }
+    
+    // Instance method
+    multiply(a, b) {
+        return a * b;
+    }
+}
+
+console.log(MathUtils.PI);           // 3.14159
+console.log(MathUtils.add(5, 3));    // 8
+
+const math = new MathUtils();
+console.log(math.multiply(4, 5));    // 20
+// console.log(math.add(1, 1));      // Error!
+            </code></pre>
+            <button class="btn btn-info" onclick="staticDemo()">Run Example</button>
+            <div class="oop-output mt-3" id="output5">Click button to see output</div>
+        </div>
+
+        <h2 class="mt-4">6. This Binding</h2>
+        <div class="demo-section">
+            <h5>Understanding 'this' Keyword</h5>
+            <button class="btn btn-primary" onclick="thisDemo()">Run Example</button>
+            <div class="oop-output mt-3" id="output6">Click button to see output</div>
+        </div>
+
+        <h2 class="mt-4">7. Encapsulation (Private Fields)</h2>
+        <div class="demo-section">
+            <h5>Private Fields & Methods (ES2022)</h5>
+            <pre class="oop-output"><code>
+class BankAccount {
+    #balance = 0;  // Private field
+    
+    constructor(initialBalance) {
+        this.#balance = initialBalance;
+    }
+    
+    deposit(amount) {
+        this.#balance += amount;
+        return `Deposited $${amount}`;
+    }
+    
+    withdraw(amount) {
+        if (amount <= this.#balance) {
+            this.#balance -= amount;
+            return `Withdrew $${amount}`;
+        }
+        return "Insufficient funds";
+    }
+    
+    getBalance() {
+        return this.#balance;
+    }
+}
+
+const account = new BankAccount(100);
+console.log(account.deposit(50));      // Deposited $50
+console.log(account.getBalance());     // 150
+// account.#balance;                   // Error! (private)
+            </code></pre>
+            <button class="btn btn-warning" onclick="encapsulationDemo()">Run Example</button>
+            <div class="oop-output mt-3" id="output7">Click button to see output</div>
+        </div>
+
+        <h2 class="mt-4">8. Getters & Setters</h2>
+        <div class="demo-section">
+            <h5>Property Accessors</h5>
+            <pre class="oop-output"><code>
+class Circle {
+    constructor(radius) {
+        this._radius = radius;
+    }
+    
+    // Getter
+    get radius() {
+        return this._radius;
+    }
+    
+    get area() {
+        return Math.PI * this._radius ** 2;
+    }
+    
+    // Setter
+    set radius(newRadius) {
+        if (newRadius > 0) {
+            this._radius = newRadius;
+        }
+    }
+}
+
+const circle = new Circle(5);
+console.log(circle.radius);    // 5
+console.log(circle.area);      // 78.54
+circle.radius = 10;
+console.log(circle.area);      // 314.16
+            </code></pre>
+            <button class="btn btn-info" onclick="getterSetterDemo()">Run Example</button>
+            <div class="oop-output mt-3" id="output8">Click button to see output</div>
+        </div>
+
+        <h2 class="mt-4">9. Design Patterns</h2>
+        <div class="demo-section">
+            <h5>Common Patterns Reference</h5>
+            <pre style="background-color: #f5f5f5; padding: 10px; border-radius: 4px;"><code>
+// Singleton - One instance only
+const Singleton = (() => {
+    let instance;
+    return {
+        getInstance() {
+            if (!instance) {
+                instance = {/* ... */};
+            }
+            return instance;
+        }
+    };
+})();
+
+// Factory - Create objects
+class ElementFactory {
+    static create(type) {
+        switch(type) {
+            case 'button': return new Button();
+            case 'input': return new Input();
+        }
+    }
+}
+
+// Observer - Publish/Subscribe
+class EventEmitter {
+    constructor() {
+        this.events = {};
+    }
+    
+    on(event, callback) {
+        if (!this.events[event]) {
+            this.events[event] = [];
+        }
+        this.events[event].push(callback);
+    }
+    
+    emit(event, data) {
+        if (this.events[event]) {
+            this.events[event].forEach(callback => callback(data));
+        }
+    }
+}
+            </code></pre>
+        </div>
+    </div>
+
+    <script>
+        function constructorDemo() {
+            let output = "=== Constructor Functions ===\n\n";
+            
+            function Person(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+            
+            Person.prototype.greet = function() {
+                return `Hello, I'm ${this.name}`;
+            };
+            
+            Person.prototype.describe = function() {
+                return `${this.name} is ${this.age} years old`;
+            };
+            
+            const person1 = new Person("John", 30);
+            const person2 = new Person("Alice", 25);
+            
+            output += `person1.greet(): ${person1.greet()}\n`;
+            output += `person1.describe(): ${person1.describe()}\n\n`;
+            
+            output += `person2.greet(): ${person2.greet()}\n`;
+            output += `person2.describe(): ${person2.describe()}\n\n`;
+            
+            output += `person1 instanceof Person: ${person1 instanceof Person}\n`;
+            output += `person1.constructor.name: ${person1.constructor.name}\n`;
+            
+            document.getElementById('output1').innerText = output;
+        }
+
+        function classDemo() {
+            let output = "=== ES6 Classes ===\n\n";
+            
+            class Person {
+                constructor(name, age) {
+                    this.name = name;
+                    this.age = age;
+                }
+                
+                greet() {
+                    return `Hello, I'm ${this.name}`;
+                }
+                
+                getAge() {
+                    return `I'm ${this.age} years old`;
+                }
+                
+                birthday() {
+                    this.age++;
+                    return `${this.name} is now ${this.age}`;
+                }
+            }
+            
+            const person = new Person("John", 30);
+            
+            output += `person.greet(): ${person.greet()}\n`;
+            output += `person.getAge(): ${person.getAge()}\n`;
+            output += `person.birthday(): ${person.birthday()}\n`;
+            output += `person.birthday(): ${person.birthday()}\n`;
+            output += `Current age: ${person.age}\n`;
+            
+            document.getElementById('output2').innerText = output;
+        }
+
+        function inheritanceDemo() {
+            let output = "=== Inheritance (Extends) ===\n\n";
+            
+            class Animal {
+                constructor(name) {
+                    this.name = name;
+                }
+                
+                speak() {
+                    return `${this.name} makes a sound`;
+                }
+            }
+            
+            class Dog extends Animal {
+                constructor(name, breed) {
+                    super(name);
+                    this.breed = breed;
+                }
+                
+                speak() {
+                    return `${this.name} barks`;
+                }
+                
+                fetch() {
+                    return `${this.name} fetches the ball`;
+                }
+            }
+            
+            const dog = new Dog("Rex", "Labrador");
+            
+            output += `dog.speak(): ${dog.speak()}\n`;
+            output += `dog.fetch(): ${dog.fetch()}\n`;
+            output += `dog.name: ${dog.name}\n`;
+            output += `dog.breed: ${dog.breed}\n`;
+            output += `dog instanceof Dog: ${dog instanceof Dog}\n`;
+            output += `dog instanceof Animal: ${dog instanceof Animal}\n`;
+            
+            document.getElementById('output3').innerText = output;
+        }
+
+        function prototypeDemo() {
+            let output = "=== Prototypes & Inheritance ===\n\n";
+            
+            function Animal(name) {
+                this.name = name;
+            }
+            
+            Animal.prototype.speak = function() {
+                return `${this.name} speaks`;
+            };
+            
+            function Dog(name, breed) {
+                Animal.call(this, name);
+                this.breed = breed;
+            }
+            
+            Dog.prototype = Object.create(Animal.prototype);
+            Dog.prototype.constructor = Dog;
+            
+            Dog.prototype.bark = function() {
+                return `${this.name} barks!`;
+            };
+            
+            const dog = new Dog("Rex", "Labrador");
+            
+            output += `dog.speak(): ${dog.speak()}\n`;
+            output += `dog.bark(): ${dog.bark()}\n`;
+            output += `dog.breed: ${dog.breed}\n\n`;
+            
+            output += "Prototype chain:\n";
+            output += `dog instanceof Dog: ${dog instanceof Dog}\n`;
+            output += `dog instanceof Animal: ${dog instanceof Animal}\n`;
+            output += `dog.hasOwnProperty('name'): ${dog.hasOwnProperty('name')}\n`;
+            output += `dog.hasOwnProperty('speak'): ${dog.hasOwnProperty('speak')}\n`;
+            
+            document.getElementById('output4').innerText = output;
+        }
+
+        function staticDemo() {
+            let output = "=== Static Methods & Properties ===\n\n";
+            
+            class MathUtils {
+                static PI = 3.14159;
+                static E = 2.71828;
+                
+                static add(a, b) {
+                    return a + b;
+                }
+                
+                static multiply(a, b) {
+                    return a * b;
+                }
+                
+                divide(a, b) {
+                    return a / b;
+                }
+            }
+            
+            output += "Static Properties:\n";
+            output += `MathUtils.PI: ${MathUtils.PI}\n`;
+            output += `MathUtils.E: ${MathUtils.E}\n\n`;
+            
+            output += "Static Methods:\n";
+            output += `MathUtils.add(5, 3): ${MathUtils.add(5, 3)}\n`;
+            output += `MathUtils.multiply(4, 7): ${MathUtils.multiply(4, 7)}\n\n`;
+            
+            output += "Instance Methods:\n";
+            const math = new MathUtils();
+            output += `math.divide(20, 4): ${math.divide(20, 4)}\n`;
+            
+            document.getElementById('output5').innerText = output;
+        }
+
+        function thisDemo() {
+            let output = "=== Understanding 'this' ===\n\n";
+            
+            // 1. Global context
+            output += "1. Global/Standalone function:\n";
+            function regularFunc() {
+                return this;
+            }
+            output += `typeof this: ${typeof regularFunc()}\n\n`;
+            
+            // 2. Object method
+            output += "2. Method in object:\n";
+            const obj = {
+                name: "John",
+                greet: function() {
+                    return `Hello from ${this.name}`;
+                }
+            };
+            output += `obj.greet(): ${obj.greet()}\n\n`;
+            
+            // 3. Constructor
+            output += "3. Constructor function:\n";
+            function Person(name) {
+                this.name = name;
+                this.info = function() {
+                    return `Name: ${this.name}`;
+                };
+            }
+            const person = new Person("Alice");
+            output += `person.info(): ${person.info()}\n\n`;
+            
+            // 4. Arrow function
+            output += "4. Arrow function:\n";
+            const arrowObj = {
+                name: "Bob",
+                greet: () => {
+                    return "Arrow functions don't have their own 'this'";
+                }
+            };
+            output += `${arrowObj.greet()}\n\n`;
+            
+            // 5. bind/call/apply
+            output += "5. Using bind/call/apply:\n";
+            function introduce(greeting) {
+                return `${greeting}, I'm ${this.name}`;
+            }
+            const person2 = {name: "Charlie"};
+            output += `introduce.call(person2, 'Hi'): ${introduce.call(person2, 'Hi')}\n`;
+            
+            document.getElementById('output6').innerText = output;
+        }
+
+        function encapsulationDemo() {
+            let output = "=== Encapsulation (Private Fields) ===\n\n";
+            
+            class BankAccount {
+                #balance = 0;
+                
+                constructor(initialBalance) {
+                    this.#balance = initialBalance;
+                }
+                
+                deposit(amount) {
+                    this.#balance += amount;
+                    return `Deposited $${amount}. New balance: $${this.#balance}`;
+                }
+                
+                withdraw(amount) {
+                    if (amount <= this.#balance) {
+                        this.#balance -= amount;
+                        return `Withdrew $${amount}. New balance: $${this.#balance}`;
+                    }
+                    return "Insufficient funds!";
+                }
+                
+                getBalance() {
+                    return this.#balance;
+                }
+            }
+            
+            const account = new BankAccount(1000);
+            
+            output += `Initial balance: $${account.getBalance()}\n`;
+            output += `${account.deposit(500)}\n`;
+            output += `${account.withdraw(200)}\n`;
+            output += `${account.withdraw(2000)}\n`;
+            output += `Final balance: $${account.getBalance()}\n\n`;
+            
+            output += "Note: #balance is private - cannot access directly\n";
+            output += "Only public methods can access it\n";
+            
+            document.getElementById('output7').innerText = output;
+        }
+
+        function getterSetterDemo() {
+            let output = "=== Getters & Setters ===\n\n";
+            
+            class Circle {
+                constructor(radius) {
+                    this._radius = radius;
+                }
+                
+                get radius() {
+                    return this._radius;
+                }
+                
+                set radius(newRadius) {
+                    if (newRadius > 0) {
+                        this._radius = newRadius;
+                    } else {
+                        output += "Invalid radius! Must be positive.\n";
+                    }
+                }
+                
+                get area() {
+                    return Math.PI * this._radius ** 2;
+                }
+                
+                get circumference() {
+                    return 2 * Math.PI * this._radius;
+                }
+            }
+            
+            const circle = new Circle(5);
+            
+            output += `Initial radius: ${circle.radius}\n`;
+            output += `Area: ${circle.area.toFixed(2)}\n`;
+            output += `Circumference: ${circle.circumference.toFixed(2)}\n\n`;
+            
+            circle.radius = 10;
+            output += `After setting radius to 10:\n`;
+            output += `New radius: ${circle.radius}\n`;
+            output += `New area: ${circle.area.toFixed(2)}\n`;
+            output += `New circumference: ${circle.circumference.toFixed(2)}\n\n`;
+            
+            circle.radius = -5;
+            
+            document.getElementById('output8').innerText = output;
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

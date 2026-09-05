@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Objects & Arrays</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .code-output {
+            background-color: #f8f9fa;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .demo-section {
+            background-color: #f0f8f0;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">JavaScript Objects & Arrays</h1>
+
+        <div class="alert alert-success">
+            <strong>Objects and Arrays</strong> are fundamental data structures in JavaScript for storing and organizing data.
+        </div>
+
+        <h2 class="mt-4">1. Arrays</h2>
+        <div class="demo-section">
+            <h5>Array Creation & Access</h5>
+            <pre class="code-output"><code>
+// Creating arrays
+let fruits = ["Apple", "Banana", "Orange"];
+let numbers = [1, 2, 3, 4, 5];
+let mixed = [1, "Hello", true, {name: "John"}];
+
+// Accessing elements
+console.log(fruits[0]);        // Apple
+console.log(fruits.length);    // 3
+
+// Methods
+fruits.push("Mango");          // Add to end
+fruits.pop();                  // Remove from end
+fruits.unshift("Cherry");      // Add to start
+fruits.shift();                // Remove from start
+            </code></pre>
+            <button class="btn btn-success" onclick="arrayBasicDemo()">Run Example</button>
+            <div class="code-output mt-3" id="output1">Click button to see output</div>
+        </div>
+
+        <div class="demo-section">
+            <h5>Array Methods</h5>
+            <pre class="code-output"><code>
+// Iteration methods
+let nums = [1, 2, 3, 4, 5];
+
+nums.forEach(n => console.log(n));
+nums.map(n => n * 2);          // Transform each element
+nums.filter(n => n > 2);       // Keep elements matching condition
+nums.reduce((sum, n) => sum + n, 0);  // Accumulate value
+
+// Search methods
+nums.includes(3);              // true
+nums.indexOf(3);               // 2
+nums.find(n => n > 3);         // 4
+nums.some(n => n > 3);         // true
+            </code></pre>
+            <button class="btn btn-success" onclick="arrayMethodsDemo()">Run Example</button>
+            <div class="code-output mt-3" id="output2">Click button to see output</div>
+        </div>
+
+        <h2 class="mt-4">2. Objects</h2>
+        <div class="demo-section">
+            <h5>Object Creation & Properties</h5>
+            <pre class="code-output"><code>
+// Object literal
+let person = {
+    firstName: "John",
+    lastName: "Doe",
+    age: 30,
+    email: "john@example.com",
+    isActive: true,
+    skills: ["JavaScript", "Python", "HTML"]
+};
+
+// Accessing properties
+person.firstName;              // John
+person["firstName"];           // John (bracket notation)
+
+// Adding properties
+person.phone = "555-1234";
+
+// Deleting properties
+delete person.isActive;
+
+// Checking properties
+"firstName" in person;         // true
+person.hasOwnProperty("age");  // true
+            </code></pre>
+            <button class="btn btn-success" onclick="objectBasicDemo()">Run Example</button>
+            <div class="code-output mt-3" id="output3">Click button to see output</div>
+        </div>
+
+        <div class="demo-section">
+            <h5>Object Methods</h5>
+            <pre class="code-output"><code>
+let person = {name: "Alice", age: 25, city: "Boston"};
+
+// Get keys, values, entries
+Object.keys(person);           // ["name", "age", "city"]
+Object.values(person);         // ["Alice", 25, "Boston"]
+Object.entries(person);        // [["name", "Alice"], ...]
+
+// Clone/merge objects
+let clone = {...person};       // Spread operator
+let merged = Object.assign({}, person, {age: 26});
+
+// Check properties
+Object.getOwnPropertyNames(person);
+            </code></pre>
+            <button class="btn btn-success" onclick="objectMethodsDemo()">Run Example</button>
+            <div class="code-output mt-3" id="output4">Click button to see output</div>
+        </div>
+
+        <h2 class="mt-4">3. Advanced Array Operations</h2>
+        <div class="demo-section">
+            <h5>Map, Filter, Reduce</h5>
+            <button class="btn btn-info" onclick="mapFilterReduceDemo()">Run Example</button>
+            <div class="code-output mt-3" id="output5">Click button to see output</div>
+        </div>
+
+        <h2 class="mt-4">4. Destructuring</h2>
+        <div class="demo-section">
+            <h5>Array & Object Destructuring</h5>
+            <pre class="code-output"><code>
+// Array destructuring
+let [a, b, c] = [1, 2, 3];
+console.log(a, b, c);          // 1, 2, 3
+
+// Skip elements
+let [x, , z] = [10, 20, 30];
+console.log(x, z);             // 10, 30
+
+// Object destructuring
+let {name, age} = {name: "John", age: 30, city: "NYC"};
+console.log(name, age);        // John, 30
+
+// Renaming
+let {name: personName, age: personAge} = {name: "Alice", age: 25};
+            </code></pre>
+            <button class="btn btn-info" onclick="destructuringDemo()">Run Example</button>
+            <div class="code-output mt-3" id="output6">Click button to see output</div>
+        </div>
+
+        <h2 class="mt-4">5. Spread Operator</h2>
+        <div class="demo-section">
+            <h5>Spread & Rest Operator</h5>
+            <button class="btn btn-warning" onclick="spreadDemo()">Run Example</button>
+            <div class="code-output mt-3" id="output7">Click button to see output</div>
+        </div>
+    </div>
+
+    <script>
+        function arrayBasicDemo() {
+            let output = "=== Array Creation & Basic Methods ===\n\n";
+            
+            let fruits = ["Apple", "Banana", "Orange"];
+            output += `Initial array: [${fruits.join(", ")}]\n`;
+            output += `Length: ${fruits.length}\n`;
+            output += `First element: ${fruits[0]}\n\n`;
+            
+            fruits.push("Mango");
+            output += `After push("Mango"): [${fruits.join(", ")}]\n`;
+            
+            let popped = fruits.pop();
+            output += `After pop(): [${fruits.join(", ")}] (removed: ${popped})\n`;
+            
+            fruits.unshift("Cherry");
+            output += `After unshift("Cherry"): [${fruits.join(", ")}]\n`;
+            
+            let shifted = fruits.shift();
+            output += `After shift(): [${fruits.join(", ")}] (removed: ${shifted})\n`;
+            
+            document.getElementById("output1").innerText = output;
+        }
+
+        function arrayMethodsDemo() {
+            let output = "=== Array Iteration Methods ===\n\n";
+            
+            let nums = [1, 2, 3, 4, 5];
+            
+            output += `Original array: [${nums.join(", ")}]\n\n`;
+            
+            output += "forEach (print each):\n";
+            nums.forEach(n => output += n + " ");
+            output += "\n\n";
+            
+            let doubled = nums.map(n => n * 2);
+            output += `map(n => n * 2): [${doubled.join(", ")}]\n`;
+            
+            let filtered = nums.filter(n => n > 2);
+            output += `filter(n => n > 2): [${filtered.join(", ")}]\n`;
+            
+            let sum = nums.reduce((acc, n) => acc + n, 0);
+            output += `reduce(sum): ${sum}\n`;
+            
+            output += `includes(3): ${nums.includes(3)}\n`;
+            output += `indexOf(4): ${nums.indexOf(4)}\n`;
+            output += `find(n => n > 3): ${nums.find(n => n > 3)}\n`;
+            output += `some(n => n > 4): ${nums.some(n => n > 4)}\n`;
+            output += `every(n => n > 0): ${nums.every(n => n > 0)}\n`;
+            
+            document.getElementById("output2").innerText = output;
+        }
+
+        function objectBasicDemo() {
+            let output = "=== Object Creation & Properties ===\n\n";
+            
+            let person = {
+                firstName: "John",
+                lastName: "Doe",
+                age: 30,
+                email: "john@example.com",
+                skills: ["JavaScript", "Python"]
+            };
+            
+            output += "Object created:\n";
+            output += JSON.stringify(person, null, 2) + "\n\n";
+            
+            output += `person.firstName: ${person.firstName}\n`;
+            output += `person["age"]: ${person["age"]}\n\n`;
+            
+            person.phone = "555-1234";
+            output += `After adding phone property:\n`;
+            output += JSON.stringify(person, null, 2) + "\n\n";
+            
+            output += `Properties in person: ${Object.keys(person).join(", ")}\n`;
+            output += `Has firstName: ${"firstName" in person}\n`;
+            
+            document.getElementById("output3").innerText = output;
+        }
+
+        function objectMethodsDemo() {
+            let output = "=== Object Utility Methods ===\n\n";
+            
+            let person = {name: "Alice", age: 25, city: "Boston"};
+            
+            output += "Object:\n";
+            output += JSON.stringify(person, null, 2) + "\n\n";
+            
+            output += `Object.keys(): [${Object.keys(person).join(", ")}]\n`;
+            output += `Object.values(): [${Object.values(person).join(", ")}]\n`;
+            output += `Object.entries():\n`;
+            Object.entries(person).forEach(([key, val]) => {
+                output += `  ${key}: ${val}\n`;
+            });
+            
+            output += "\nCloning with spread operator:\n";
+            let clone = {...person, age: 26};
+            output += JSON.stringify(clone, null, 2) + "\n";
+            
+            document.getElementById("output4").innerText = output;
+        }
+
+        function mapFilterReduceDemo() {
+            let output = "=== Map, Filter, Reduce Examples ===\n\n";
+            
+            let products = [
+                {name: "Laptop", price: 1000},
+                {name: "Phone", price: 500},
+                {name: "Tablet", price: 300}
+            ];
+            
+            output += "Products:\n";
+            products.forEach(p => output += `  ${p.name}: $${p.price}\n`);
+            output += "\n";
+            
+            // Map example
+            let prices = products.map(p => p.price);
+            output += `Prices (map): [${prices.join(", ")}]\n`;
+            
+            // Filter example
+            let expensive = products.filter(p => p.price > 400);
+            output += `Expensive items (filter): ${expensive.map(p => p.name).join(", ")}\n`;
+            
+            // Reduce example
+            let total = products.reduce((sum, p) => sum + p.price, 0);
+            output += `Total price (reduce): $${total}\n\n`;
+            
+            // Complex example: Get total of expensive items
+            let expensiveTotal = products
+                .filter(p => p.price > 400)
+                .reduce((sum, p) => sum + p.price, 0);
+            output += `Total of expensive items: $${expensiveTotal}\n`;
+            
+            document.getElementById("output5").innerText = output;
+        }
+
+        function destructuringDemo() {
+            let output = "=== Destructuring Examples ===\n\n";
+            
+            // Array destructuring
+            let [a, b, c] = [10, 20, 30];
+            output += `Array destructuring: [a, b, c] = [10, 20, 30]\n`;
+            output += `a: ${a}, b: ${b}, c: ${c}\n\n`;
+            
+            // Array with skip
+            let [x, , z] = [100, 200, 300];
+            output += `Skip middle: [x, , z] = [100, 200, 300]\n`;
+            output += `x: ${x}, z: ${z}\n\n`;
+            
+            // Object destructuring
+            let person = {name: "John", age: 30, city: "NYC"};
+            let {name, age} = person;
+            output += `Object destructuring: {name, age} = person\n`;
+            output += `name: ${name}, age: ${age}\n\n`;
+            
+            // With renaming
+            let {name: personName, age: personAge} = person;
+            output += `With renaming: {name: personName, age: personAge}\n`;
+            output += `personName: ${personName}, personAge: ${personAge}\n`;
+            
+            document.getElementById("output6").innerText = output;
+        }
+
+        function spreadDemo() {
+            let output = "=== Spread & Rest Operator ===\n\n";
+            
+            // Spread with arrays
+            let arr1 = [1, 2, 3];
+            let arr2 = [4, 5, 6];
+            let combined = [...arr1, ...arr2];
+            output += `Spread arrays: [...${arr1}, ...${arr2}]\n`;
+            output += `Result: [${combined.join(", ")}]\n\n`;
+            
+            // Spread with objects
+            let obj1 = {a: 1, b: 2};
+            let obj2 = {c: 3, d: 4};
+            let merged = {...obj1, ...obj2};
+            output += `Spread objects: {...obj1, ...obj2}\n`;
+            output += JSON.stringify(merged) + "\n\n";
+            
+            // Rest operator
+            function sum(...numbers) {
+                return numbers.reduce((a, b) => a + b, 0);
+            }
+            
+            output += `Rest operator: function sum(...numbers)\n`;
+            output += `sum(1, 2, 3, 4, 5) = ${sum(1, 2, 3, 4, 5)}\n\n`;
+            
+            // Rest in destructuring
+            let [first, second, ...rest] = [10, 20, 30, 40, 50];
+            output += `Rest in destructuring: [first, second, ...rest]\n`;
+            output += `first: ${first}, second: ${second}, rest: [${rest.join(", ")}]\n`;
+            
+            document.getElementById("output7").innerText = output;
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

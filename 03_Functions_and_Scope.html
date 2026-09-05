@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Functions & Scope</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .code-output {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+        }
+        .demo-section {
+            background-color: #fffbf0;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">JavaScript Functions & Scope</h1>
+
+        <div class="alert alert-warning">
+            <strong>Functions</strong> are reusable blocks of code, and <strong>Scope</strong> determines variable visibility.
+        </div>
+
+        <h2 class="mt-4">1. Function Declarations</h2>
+        <div class="demo-section">
+            <h5>Different Ways to Declare Functions</h5>
+            <pre class="code-output"><code>
+// Function declaration
+function greet(name) {
+    return "Hello, " + name;
+}
+
+// Function expression
+const add = function(a, b) {
+    return a + b;
+};
+
+// Arrow function (ES6)
+const multiply = (a, b) => a * b;
+
+// Arrow function with multiple statements
+const calculate = (a, b) => {
+    let sum = a + b;
+    return sum * 2;
+};
+
+// Immediately Invoked Function Expression (IIFE)
+(function() {
+    console.log("This runs immediately!");
+})();
+            </code></pre>
+            <button class="btn btn-warning" onclick="functionDeclarationDemo()">Run Example</button>
+            <div class="code-output mt-3" id="output1">Click button to see output</div>
+        </div>
+
+        <h2 class="mt-4">2. Scope</h2>
+        <div class="demo-section">
+            <h5>Global, Function, and Block Scope</h5>
+            <pre class="code-output"><code>
+// Global scope
+let globalVar = "I'm global";
+
+function myFunction() {
+    // Function scope
+    let funcVar = "I'm in function";
+    
+    if (true) {
+        // Block scope (let and const)
+        let blockVar = "I'm in block";
+        var oldVar = "I'm function scoped";
+    }
+    
+    console.log(funcVar);       // Works
+    console.log(blockVar);      // ReferenceError!
+}
+
+console.log(globalVar);         // Works
+console.log(myFunction);        // Function not accessible
+            </code></pre>
+            <button class="btn btn-warning" onclick="scopeDemo()">Run Example</button>
+            <div class="code-output mt-3" id="output2">Click button to see output</div>
+        </div>
+
+        <h2 class="mt-4">3. Closures</h2>
+        <div class="demo-section">
+            <h5>Understanding Closures</h5>
+            <pre class="code-output"><code>
+// Closure example
+function createCounter() {
+    let count = 0;      // This variable persists
+    
+    return function() {
+        count++;
+        return count;
+    };
+}
+
+const counter = createCounter();
+console.log(counter());  // 1
+console.log(counter());  // 2
+console.log(counter());  // 3
+
+// The inner function "closes over" the count variable
+            </code></pre>
+            <button class="btn btn-warning" onclick="closureDemo()">Run Example</button>
+            <div class="code-output mt-3" id="output3">Click button to see output</div>
+        </div>
+
+        <h2 class="mt-4">4. Higher-Order Functions</h2>
+        <div class="demo-section">
+            <h5>Functions that Return or Accept Functions</h5>
+            <pre class="code-output"><code>
+// Function that returns a function
+function makeMultiplier(factor) {
+    return function(number) {
+        return number * factor;
+    };
+}
+
+const double = makeMultiplier(2);
+const triple = makeMultiplier(3);
+
+console.log(double(5));  // 10
+console.log(triple(5));  // 15
+
+// Function that accepts a function
+function processArray(arr, callback) {
+    for (let i = 0; i < arr.length; i++) {
+        arr[i] = callback(arr[i]);
+    }
+    return arr;
+}
+
+let nums = [1, 2, 3];
+nums = processArray(nums, n => n * 2);
+            </code></pre>
+            <button class="btn btn-warning" onclick="higherOrderDemo()">Run Example</button>
+            <div class="code-output mt-3" id="output4">Click button to see output</div>
+        </div>
+
+        <h2 class="mt-4">5. Callback Functions</h2>
+        <div class="demo-section">
+            <h5>Using Callbacks</h5>
+            <button class="btn btn-info" onclick="callbackDemo()">Run Example</button>
+            <div class="code-output mt-3" id="output5">Click button to see output</div>
+        </div>
+
+        <h2 class="mt-4">6. Default Parameters & Rest Parameters</h2>
+        <div class="demo-section">
+            <h5>Modern Function Features</h5>
+            <pre class="code-output"><code>
+// Default parameters
+function greet(name = "Guest", greeting = "Hello") {
+    return greeting + ", " + name;
+}
+
+console.log(greet());           // Hello, Guest
+console.log(greet("John"));     // Hello, John
+
+// Rest parameters
+function sum(...numbers) {
+    let total = 0;
+    for (let num of numbers) {
+        total += num;
+    }
+    return total;
+}
+
+console.log(sum(1, 2, 3));      // 6
+console.log(sum(1, 2, 3, 4, 5)); // 15
+
+// Combining default and rest
+function formatList(prefix = "Items:", ...items) {
+    return prefix + " " + items.join(", ");
+}
+            </code></pre>
+            <button class="btn btn-info" onclick="parametersDemo()">Run Example</button>
+            <div class="code-output mt-3" id="output6">Click button to see output</div>
+        </div>
+
+        <h2 class="mt-4">7. Arrow Functions</h2>
+        <div class="demo-section">
+            <h5>Arrow Function Syntax & Usage</h5>
+            <button class="btn btn-info" onclick="arrowFunctionDemo()">Run Example</button>
+            <div class="code-output mt-3" id="output7">Click button to see output</div>
+        </div>
+    </div>
+
+    <script>
+        function functionDeclarationDemo() {
+            let output = "=== Function Declarations ===\n\n";
+            
+            // Function declaration
+            function greet(name) {
+                return "Hello, " + name;
+            }
+            
+            // Function expression
+            const add = function(a, b) {
+                return a + b;
+            };
+            
+            // Arrow function
+            const multiply = (a, b) => a * b;
+            
+            output += `Function Declaration: greet("Alice") = "${greet("Alice")}"\n`;
+            output += `Function Expression: add(5, 3) = ${add(5, 3)}\n`;
+            output += `Arrow Function: multiply(4, 5) = ${multiply(4, 5)}\n\n`;
+            
+            // Arrow with multiple statements
+            const calculate = (a, b) => {
+                let sum = a + b;
+                let product = a * b;
+                return {sum, product};
+            };
+            
+            let result = calculate(3, 4);
+            output += `Arrow with multiple statements:\n`;
+            output += `calculate(3, 4) = {sum: ${result.sum}, product: ${result.product}}\n`;
+            
+            document.getElementById("output1").innerText = output;
+        }
+
+        function scopeDemo() {
+            let output = "=== Scope Examples ===\n\n";
+            
+            let globalVar = "I'm global";
+            output += `Global variable: "${globalVar}"\n\n`;
+            
+            function demonstrateScope() {
+                let funcVar = "I'm in function scope";
+                output += `Inside function: "${funcVar}"\n`;
+                
+                if (true) {
+                    let blockVar = "I'm in block scope";
+                    var oldVar = "I'm function scoped (var)";
+                    output += `Inside block: "${blockVar}"\n`;
+                    output += `Inside block (var): "${oldVar}"\n`;
+                }
+                
+                // blockVar would cause error here
+                output += `After block (var still accessible): "${oldVar}"\n`;
+                // output += blockVar; // Error!
+            }
+            
+            demonstrateScope();
+            output += "\n✓ Global variable accessible: " + globalVar;
+            
+            document.getElementById("output2").innerText = output;
+        }
+
+        function closureDemo() {
+            let output = "=== Closures ===\n\n";
+            
+            function createCounter() {
+                let count = 0;
+                
+                return {
+                    increment: function() {
+                        count++;
+                        return count;
+                    },
+                    decrement: function() {
+                        count--;
+                        return count;
+                    },
+                    getCount: function() {
+                        return count;
+                    }
+                };
+            }
+            
+            const counter = createCounter();
+            
+            output += `Initial count: ${counter.getCount()}\n`;
+            output += `After increment: ${counter.increment()}\n`;
+            output += `After increment: ${counter.increment()}\n`;
+            output += `After decrement: ${counter.decrement()}\n`;
+            output += `Final count: ${counter.getCount()}\n\n`;
+            
+            output += "The inner functions \"close over\" the count variable.\n";
+            output += "Each counter instance has its own count variable.";
+            
+            document.getElementById("output3").innerText = output;
+        }
+
+        function higherOrderDemo() {
+            let output = "=== Higher-Order Functions ===\n\n";
+            
+            // Function that returns a function
+            function makeMultiplier(factor) {
+                return function(number) {
+                    return number * factor;
+                };
+            }
+            
+            const double = makeMultiplier(2);
+            const triple = makeMultiplier(3);
+            const square = makeMultiplier(x => x * x);
+            
+            output += `double = makeMultiplier(2)\n`;
+            output += `triple = makeMultiplier(3)\n\n`;
+            
+            output += `double(5) = ${double(5)}\n`;
+            output += `double(10) = ${double(10)}\n`;
+            output += `triple(5) = ${triple(5)}\n`;
+            output += `triple(10) = ${triple(10)}\n\n`;
+            
+            // Function that accepts a function
+            function applyToArray(arr, callback) {
+                return arr.map(callback);
+            }
+            
+            let nums = [1, 2, 3, 4, 5];
+            let doubled = applyToArray(nums, n => n * 2);
+            let squared = applyToArray(nums, n => n * n);
+            
+            output += `applyToArray([1,2,3,4,5], n => n*2) = [${doubled.join(", ")}]\n`;
+            output += `applyToArray([1,2,3,4,5], n => n*n) = [${squared.join(", ")}]\n`;
+            
+            document.getElementById("output4").innerText = output;
+        }
+
+        function callbackDemo() {
+            let output = "=== Callback Functions ===\n\n";
+            
+            function fetchData(callback) {
+                output += "Fetching data...\n";
+                setTimeout(() => {
+                    callback("Data received!");
+                }, 500);
+            }
+            
+            output += "Starting fetch:\n";
+            
+            fetchData(function(data) {
+                output += `Callback executed with: "${data}"\n`;
+                document.getElementById("output5").innerText = output;
+            });
+            
+            output += "Waiting for callback...\n\n";
+            document.getElementById("output5").innerText = output;
+            
+            // Array callbacks
+            setTimeout(() => {
+                let result = output;
+                result += "=== Array Callbacks ===\n\n";
+                
+                let nums = [1, 2, 3, 4, 5];
+                
+                result += `Original array: [${nums.join(", ")}]\n\n`;
+                
+                result += `forEach - Execute for each element:\n`;
+                let forEachOutput = "";
+                nums.forEach(n => forEachOutput += n + " ");
+                result += forEachOutput + "\n\n";
+                
+                let doubled = nums.map(n => n * 2);
+                result += `map - Transform each element: [${doubled.join(", ")}]\n\n`;
+                
+                let evens = nums.filter(n => n % 2 === 0);
+                result += `filter - Keep matching elements: [${evens.join(", ")}]\n`;
+                
+                document.getElementById("output5").innerText = result;
+            }, 600);
+        }
+
+        function parametersDemo() {
+            let output = "=== Default & Rest Parameters ===\n\n";
+            
+            // Default parameters
+            function greet(name = "Guest", greeting = "Hello") {
+                return greeting + ", " + name;
+            }
+            
+            output += "Default Parameters:\n";
+            output += `greet() = "${greet()}"\n`;
+            output += `greet("John") = "${greet("John")}"\n`;
+            output += `greet("Alice", "Hi") = "${greet("Alice", "Hi")}"\n\n`;
+            
+            // Rest parameters
+            function sum(...numbers) {
+                return numbers.reduce((a, b) => a + b, 0);
+            }
+            
+            output += "Rest Parameters:\n";
+            output += `sum(1, 2, 3) = ${sum(1, 2, 3)}\n`;
+            output += `sum(1, 2, 3, 4, 5) = ${sum(1, 2, 3, 4, 5)}\n`;
+            output += `sum(10) = ${sum(10)}\n\n`;
+            
+            // Combining both
+            function formatList(prefix = "Items:", ...items) {
+                return prefix + " " + items.join(", ");
+            }
+            
+            output += "Combining Default & Rest:\n";
+            output += `formatList() = "${formatList()}"\n`;
+            output += `formatList("Colors:", "Red", "Green", "Blue") = "${formatList("Colors:", "Red", "Green", "Blue")}"\n`;
+            
+            document.getElementById("output6").innerText = output;
+        }
+
+        function arrowFunctionDemo() {
+            let output = "=== Arrow Functions ===\n\n";
+            
+            // Single parameter
+            const square = x => x * x;
+            
+            // Multiple parameters
+            const add = (a, b) => a + b;
+            
+            // No parameters
+            const greet = () => "Hello!";
+            
+            // Multiple statements
+            const calculate = (a, b) => {
+                let sum = a + b;
+                let product = a * b;
+                return sum + product;
+            };
+            
+            output += "Single parameter:\n";
+            output += `square = x => x * x\n`;
+            output += `square(5) = ${square(5)}\n\n`;
+            
+            output += "Multiple parameters:\n";
+            output += `add = (a, b) => a + b\n`;
+            output += `add(3, 4) = ${add(3, 4)}\n\n`;
+            
+            output += "No parameters:\n";
+            output += `greet = () => "Hello!"\n`;
+            output += `greet() = "${greet()}"\n\n`;
+            
+            output += "Multiple statements:\n";
+            output += `calculate(5, 3) = ${calculate(5, 3)}\n\n`;
+            
+            output += "Arrow functions are concise and great for callbacks!\n";
+            
+            document.getElementById("output7").innerText = output;
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
